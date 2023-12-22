@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node .",
     "dev": "./node_modules/.bin/nodemon --inspect=0.0.0.0:9229 .",
-    "test": "./node_modules/.bin/mocha -r ts-node/register ./src/**/*.test.ts",
+    "test": "TZ=utc ./node_modules/.bin/mocha -r ts-node/register ./src/**/*.test.ts",
     "compile": "./node_modules/.bin/tsc --project tsconfig.json"
   },
   "keywords": [],
