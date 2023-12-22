@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node .",
     "dev": "./node_modules/.bin/nodemon --inspect=0.0.0.0:9229 .",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "./node_modules/.bin/mocha -r ts-node/register ./src/**/*.test.ts",
     "compile": "./node_modules/.bin/tsc --project tsconfig.json"
   },
   "keywords": [],
@@ -17,6 +17,9 @@
   },
   "devDependencies": {
     "@types/mocha": "^10.0.6",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "eslint": "^8.56.0",
     "mocha": "^10.2.0",
     "nodemon": "^3.0.2",
     "ts-node": "^10.9.2",
