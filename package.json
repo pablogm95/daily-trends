@@ -1,0 +1,31 @@
+{
+  "name": "daily-trends",
+  "version": "1.0.0",
+  "description": "Daily Trends Backend",
+  "main": "./dist/index.js",
+  "scripts": {
+    "start": "node .",
+    "dev": "./node_modules/.bin/nodemon --inspect=0.0.0.0:9229 .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "./node_modules/.bin/tsc --project tsconfig.json"
+  },
+  "keywords": [],
+  "author": "Pablo Gijon Mora",
+  "license": "ISC",
+  "engines": {
+    "node": ">=20.10.0"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.6",
+    "mocha": "^10.2.0",
+    "nodemon": "^3.0.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@types/sinon": "^17.0.2",
+    "expect": "^29.7.0",
+    "sinon": "^17.0.1",
+    "supertest": "^6.3.3"
+  }
+}
