@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from 'express'
 import { StatusCodes } from 'http-status-codes'
 import { AlreadyExistsError } from '../../../../exceptions/already-exist.error'
 import { NotExistsError } from '../../../../exceptions/not-exists.error'
+import { PropertyRequiredError } from '../../../../exceptions/property-required.error'
 
 /**
  * Handle HTTP errors
@@ -22,6 +23,7 @@ export function errorHandler(
   switch (error.constructor) {
   case AlreadyExistsError:
   case NotExistsError:
+  case PropertyRequiredError:
     return res.status(StatusCodes.BAD_REQUEST).json(error)
   default:
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).end()

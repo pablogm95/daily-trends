@@ -46,6 +46,7 @@
     "morgan": "^1.10.0",
     "reflect-metadata": "^0.2.1",
     "source-map-support": "^0.5.21",
-    "typedi": "^0.10.0"
+    "typedi": "^0.10.0",
+    "zod": "^3.22.4"
   }
 }

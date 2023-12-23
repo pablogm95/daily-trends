@@ -1,3 +1,6 @@
+/**
+ * Only to be extended by other custom exceptions
+ */
 export class CustomError extends Error {
   /**
    * @param {string} message Internal message
