@@ -2,6 +2,7 @@ import express, { Application } from 'express'
 import { StatusCodes } from 'http-status-codes'
 import helmet from 'helmet'
 import morgan from 'morgan'
+import { errorHandler } from './manage-error'
 
 /*
  * Express configuration
@@ -45,5 +46,8 @@ export class ExpressApi {
     })
 
     this.app.use(router)
+
+    // Middleware to manage errors
+    this.app.use(errorHandler)
   }
 }
