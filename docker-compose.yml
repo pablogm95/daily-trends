@@ -1,12 +1,16 @@
-version: '3.8'
+version: "3.8"
 
 services:
-
     daily-trends:
         build:
             context: .
             dockerfile: Dockerfile
             target: development
+        environment:
+            - MONGODB_CLUSTER_URL=mongo:27017
+            - MONGODB_URI=mongodb://mongo:27017/daily-trends?authSource=admin
+            - MONGODB_USERNAME=admin
+            - MONGODB_PASSWORD=pass
         stdin_open: true
         tty: true
         container_name: daily-trends
@@ -16,6 +20,29 @@ services:
         ports:
             - 8080:8080
             - 9229:9229
+        depends_on:
+            - mongo
+
+    mongo:
+        image: mongo:7.0-jammy
+        container_name: mongo
+        environment:
+            - MONGO_INITDB_ROOT_USERNAME=admin
+            - MONGO_INITDB_ROOT_PASSWORD=pass
+        ports:
+            - 27017:27017
+
+    mongo_express:
+        image: mongo-express:1-20-alpine3.18
+        container_name: mongo_express
+        logging:
+            driver: none
+        depends_on:
+            - mongo
+        environment:
+            - ME_CONFIG_MONGODB_URL=mongodb://admin:pass@mongo:27017/daily-trends?authSource=admin
+        ports:
+            - 8081:8081
 
 volumes:
     auth_node_modules:
