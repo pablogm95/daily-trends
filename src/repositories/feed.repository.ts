@@ -1,6 +1,9 @@
 import { Feed, IFeed } from '../entities/Feed'
 
-export type FeedFilters = Pick<IFeed, 'title' | 'source'>
+export type FeedFilters = Partial<Pick<IFeed, 'title' | 'source'>> & {
+  startDate?: Date
+  endDate?: Date
+}
 
 export interface IFeedRepository {
   /**
