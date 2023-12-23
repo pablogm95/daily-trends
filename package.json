@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node .",
     "dev": "./node_modules/.bin/nodemon --inspect=0.0.0.0:9229 .",
-    "test": "TZ=utc ./node_modules/.bin/mocha -r ts-node/register ./src/**/*.test.ts",
+    "test": "TZ=utc ./node_modules/.bin/mocha",
+    "test:watch": "npm run test -- --watch-extensions ts --watch",
     "compile": "./node_modules/.bin/tsc --project tsconfig.json"
   },
   "keywords": [],
@@ -29,6 +30,7 @@
     "@types/sinon": "^17.0.2",
     "expect": "^29.7.0",
     "sinon": "^17.0.1",
-    "supertest": "^6.3.3"
+    "supertest": "^6.3.3",
+    "typedi": "^0.10.0"
   }
 }

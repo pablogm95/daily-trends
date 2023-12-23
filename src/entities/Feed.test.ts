@@ -8,14 +8,14 @@ describe('Feed entity', () => {
 
   it('should have property access', () => {
     const feed = new Feed({
-      id: 'feedId',
+      _id: 'feedId',
       title: 'Feed title',
       description: 'Feed description',
       source: FeedSource.CUSTOM,
       newsDate: new Date('2020/01/01')
     })
 
-    expect(feed.id).toBe('feedId')
+    expect(feed._id).toBe('feedId')
     expect(feed.title).toBe('Feed title')
     expect(feed.description).toBe('Feed description')
     expect(feed.source).toBe('custom')

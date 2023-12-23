@@ -1,4 +1,6 @@
-import { Feed } from '../entities/Feed'
+import { Feed, IFeed } from '../entities/Feed'
+
+export type FeedFilters = Pick<IFeed, 'title' | 'source'>
 
 export interface IFeedRepository {
   /**
@@ -10,7 +12,7 @@ export interface IFeedRepository {
   /**
    * Get all feeds
    */
-  getAll(): Promise<Feed[]>
+  getAll(filters?: FeedFilters): Promise<Feed[]>
 
   /**
    * Get an existent feed

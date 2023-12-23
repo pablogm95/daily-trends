@@ -5,7 +5,7 @@ export enum FeedSource {
 }
 
 export interface IFeed {
-  readonly id: string;
+  readonly _id: string;
   title: string;
   description: string;
   /**
@@ -19,14 +19,14 @@ export interface IFeed {
 }
 
 export class Feed implements IFeed {
-  readonly id: string
+  readonly _id: string
   title: string
   description: string
   source: FeedSource
   newsDate: Date
 
-  constructor({ id, title, description, source, newsDate }: IFeed) {
-    this.id = id
+  constructor({ _id, title, description, source, newsDate }: IFeed) {
+    this._id = _id
     this.title = title
     this.description = description
     this.source = source
