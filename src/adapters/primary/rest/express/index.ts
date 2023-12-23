@@ -3,6 +3,7 @@ import { StatusCodes } from 'http-status-codes'
 import helmet from 'helmet'
 import morgan from 'morgan'
 import { errorHandler } from './manage-error'
+import { createFeedRouter } from './routes/feed.router'
 
 /*
  * Express configuration
@@ -46,6 +47,7 @@ export class ExpressApi {
     })
 
     this.app.use(router)
+    this.app.use('/feeds', createFeedRouter())
 
     // Middleware to manage errors
     this.app.use(errorHandler)
