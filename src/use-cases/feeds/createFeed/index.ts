@@ -7,10 +7,12 @@ import { AlreadyExistsError } from '../../../exceptions/already-exist.error'
 
 @Service()
 export class CreateFeed {
-  constructor(
-    @Inject(FEED_REPOSITORY) private readonly feedRepository: IFeedRepository,
-    @Inject(ID_GENERATOR) private readonly idGenerator: IIDGenerator
-  ) {
+  @Inject(FEED_REPOSITORY)
+  private readonly feedRepository: IFeedRepository
+  @Inject(ID_GENERATOR)
+  private readonly idGenerator: IIDGenerator
+
+  constructor(feedRepository: IFeedRepository, idGenerator: IIDGenerator) {
     this.feedRepository = feedRepository
     this.idGenerator = idGenerator
   }

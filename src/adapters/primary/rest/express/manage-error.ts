@@ -24,7 +24,7 @@ export function errorHandler(
   case AlreadyExistsError:
   case NotExistsError:
   case PropertyRequiredError:
-    return res.status(StatusCodes.BAD_REQUEST).json(error)
+    return res.status(StatusCodes.BAD_REQUEST).json(error.message)
   default:
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).end()
   }

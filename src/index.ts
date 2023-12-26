@@ -4,8 +4,9 @@ import { ExpressApi } from './adapters/primary/rest/express'
 import { Config } from './config'
 import { MongoManager } from './adapters/secondary/mongodb'
 import Container from 'typedi'
-import { FEED_REPOSITORY } from './constants'
+import { FEED_REPOSITORY, ID_GENERATOR } from './constants'
 import { MongoFeedRepository } from './adapters/secondary/mongodb/feed.repository'
+import { NanoIdGenerator } from './adapters/secondary/nanoid-generator'
 
 async function main() {
   // Source mapping => compiled js
@@ -21,12 +22,10 @@ async function main() {
   // INJECT DEPENDENCIES
 
   // Repositories
-  Container.set(
-    FEED_REPOSITORY,
-    new MongoFeedRepository(mongoClient)
-  )
+  Container.set(FEED_REPOSITORY, new MongoFeedRepository(mongoClient))
 
-
+  // DATABASE IDENTIFIERS CREATOR
+  Container.set(ID_GENERATOR, new NanoIdGenerator())
 
   // HTTP adapter configuration
   const api = new ExpressApi()
