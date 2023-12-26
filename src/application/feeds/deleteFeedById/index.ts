@@ -1,6 +1,6 @@
 import { Inject, Service } from 'typedi'
-import { IFeedRepository } from '../../../repositories/feed.repository'
-import { FEED_REPOSITORY } from '../../../constants'
+import { IFeedRepository } from '@/domain/repositories/feed.repository'
+import { FEED_REPOSITORY } from '@/constants'
 
 @Service()
 export class DeleteFeedById {

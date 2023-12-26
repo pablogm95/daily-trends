@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Feed } from '../src/entities/Feed'
-import { FeedFilters, IFeedRepository } from '../src/repositories/feed.repository'
+import { Feed } from '@/domain/entities/Feed'
+import { FeedFilters, IFeedRepository } from '@/domain/repositories/feed.repository'
 
 export class FakeFeedRepository implements IFeedRepository {
   create(feed: Feed): Promise<void> {

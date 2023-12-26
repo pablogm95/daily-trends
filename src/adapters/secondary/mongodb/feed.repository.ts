@@ -1,10 +1,10 @@
 import { Collection, Filter, MongoClient } from 'mongodb'
-import { Feed, IFeed } from '../../../entities/Feed'
+import { Feed, IFeed } from '@/domain/entities/Feed'
 import {
   FeedFilters,
   IFeedRepository,
-} from '../../../repositories/feed.repository'
-import { FEED_COLLECTION } from '../../../constants'
+} from '@/domain/repositories/feed.repository'
+import { FEED_COLLECTION } from '@/constants'
 
 export class MongoFeedRepository implements IFeedRepository {
   private readonly client: MongoClient

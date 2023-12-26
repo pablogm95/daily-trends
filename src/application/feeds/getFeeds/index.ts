@@ -1,7 +1,7 @@
 import { Inject, Service } from 'typedi'
-import { FeedFilters, IFeedRepository } from '../../../repositories/feed.repository'
-import { FEED_REPOSITORY } from '../../../constants'
-import { Feed } from '../../../entities/Feed'
+import { FeedFilters, IFeedRepository } from '@/domain/repositories/feed.repository'
+import { FEED_REPOSITORY } from '@/constants'
+import { Feed } from '@/domain/entities/Feed'
 import dayjs from 'dayjs'
 
 @Service()

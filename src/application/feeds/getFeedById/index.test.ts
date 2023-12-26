@@ -1,8 +1,8 @@
 import expect from 'expect'
 import sinon from 'sinon'
 import { GetFeedById } from '.'
-import { FakeFeedRepository } from '../../../../__mocks__/feed.repository'
-import { populateFeed } from '../../../../__mocks__/fixtures'
+import { FakeFeedRepository } from '@/../__mocks__/feed.repository'
+import { populateFeed } from '@/../__mocks__/fixtures'
 
 describe('Get feed by id use case', () => {
   afterEach(() => {

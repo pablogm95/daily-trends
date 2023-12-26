@@ -1,6 +1,6 @@
 import { z } from 'zod'
-import { FeedSource } from '../../entities/Feed'
-import { PropertyRequiredError } from '../../exceptions/property-required.error'
+import { FeedSource } from '@/domain/entities/Feed'
+import { PropertyRequiredError } from '@/domain/exceptions/property-required.error'
 
 interface IFeedCreationDTOResult {
   title: string;

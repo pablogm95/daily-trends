@@ -1,5 +1,5 @@
 import { MongoClient, Db } from 'mongodb'
-import { Config } from '../../../config'
+import { Config } from '@/config'
 
 export class MongoManager {
   private client?: MongoClient

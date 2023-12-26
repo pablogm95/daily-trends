@@ -1,9 +1,9 @@
 import expect from 'expect'
 import sinon, { SinonFakeTimers } from 'sinon'
 import { GetFeeds } from '.'
-import { FakeFeedRepository } from '../../../../__mocks__/feed.repository'
-import { populateFeeds } from '../../../../__mocks__/fixtures'
-import { FeedSource } from '../../../entities/Feed'
+import { FakeFeedRepository } from '@/../__mocks__/feed.repository'
+import { populateFeeds } from '@/../__mocks__/fixtures'
+import { FeedSource } from '@/domain/entities/Feed'
 
 describe('Get feeds use case', () => {
   const now = new Date('2020/01/01')

@@ -1,4 +1,4 @@
-import { Feed, FeedSource } from '../src/entities/Feed'
+import { Feed, FeedSource } from '@/domain/entities/Feed'
 import { faker } from '@faker-js/faker'
 
 /**

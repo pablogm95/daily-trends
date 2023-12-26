@@ -1,8 +1,8 @@
 import Container from 'typedi'
-import { CreateFeed } from '../../../../../use-cases/feeds/createFeed'
+import { CreateFeed } from '@/application/feeds/createFeed'
 import { StatusCodes } from 'http-status-codes'
 import { Request, Response } from 'express'
-import { FeedCreationDTO } from '../../../../DTOs/feed-creation.dto'
+import { FeedCreationDTO } from '@/adapters/DTOs/feed-creation.dto'
 import asyncHandler from 'express-async-handler'
 
 export class FeedController {
@@ -11,7 +11,7 @@ export class FeedController {
   createFeed = asyncHandler(async (req: Request, res: Response) => {
     const feedCreationDTO = new FeedCreationDTO(req.body)
 
-    const response = await Container.get(CreateFeed).execute(
+    const response = await this.createFeedUseCase.execute(
       feedCreationDTO.sanitize()
     )
 

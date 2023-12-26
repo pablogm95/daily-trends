@@ -1,4 +1,4 @@
-import { Feed, IFeed } from '../entities/Feed'
+import { Feed, IFeed } from '@/domain/entities/Feed'
 
 export type FeedFilters = Partial<Pick<IFeed, 'title' | 'source'>> & {
   startDate?: Date

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import expect from 'expect'
 import { FeedCreationDTO } from './feed-creation.dto'
-import { PropertyRequiredError } from '../../exceptions/property-required.error'
+import { PropertyRequiredError } from '@/domain/exceptions/property-required.error'
 
 describe('Feed Creation DTO', () => {
   it('should throw on fail validation', () => {

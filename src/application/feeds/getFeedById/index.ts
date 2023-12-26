@@ -1,7 +1,7 @@
 import { Inject, Service } from 'typedi'
-import { IFeedRepository } from '../../../repositories/feed.repository'
-import { FEED_REPOSITORY } from '../../../constants'
-import { Feed } from '../../../entities/Feed'
+import { IFeedRepository } from '@/domain/repositories/feed.repository'
+import { FEED_REPOSITORY } from '@/constants'
+import { Feed } from '@/domain/entities/Feed'
 
 @Service()
 export class GetFeedById {

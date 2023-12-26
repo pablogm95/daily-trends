@@ -1,7 +1,7 @@
 import expect from 'expect'
 import sinon from 'sinon'
 import { DeleteFeedById } from '.'
-import { FakeFeedRepository } from '../../../../__mocks__/feed.repository'
+import { FakeFeedRepository } from '@/../__mocks__/feed.repository'
 
 describe('Delete feed by id use case', () => {
   afterEach(() => {

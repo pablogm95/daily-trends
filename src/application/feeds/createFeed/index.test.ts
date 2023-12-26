@@ -1,9 +1,9 @@
 import expect from 'expect'
 import sinon from 'sinon'
 import { CreateFeed } from '.'
-import { FakeFeedRepository } from '../../../../__mocks__/feed.repository'
-import { Feed, FeedSource } from '../../../entities/Feed'
-import { AlreadyExistsError } from '../../../exceptions/already-exist.error'
+import { FakeFeedRepository } from '@/../__mocks__/feed.repository'
+import { Feed, FeedSource } from '@/domain/entities/Feed'
+import { AlreadyExistsError } from '@/domain/exceptions/already-exist.error'
 import crypto from 'crypto'
 
 describe('Create feed use case', () => {

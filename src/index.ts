@@ -1,11 +1,11 @@
 import 'reflect-metadata'
 import { install as installSourceMapSupport } from 'source-map-support'
-import { ExpressApi } from './adapters/primary/rest/express'
-import { Config } from './config'
-import { MongoManager } from './adapters/secondary/mongodb'
+import { ExpressApi } from '@/adapters/primary/rest/express'
+import { Config } from '@/config'
+import { MongoManager } from '@/adapters/secondary/mongodb'
 import Container from 'typedi'
-import { FEED_REPOSITORY } from './constants'
-import { MongoFeedRepository } from './adapters/secondary/mongodb/feed.repository'
+import { FEED_REPOSITORY } from '@/constants'
+import { MongoFeedRepository } from '@/adapters/secondary/mongodb/feed.repository'
 
 async function main() {
   // Source mapping => compiled js

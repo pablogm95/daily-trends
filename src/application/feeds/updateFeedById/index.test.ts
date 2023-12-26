@@ -1,10 +1,10 @@
 import expect from 'expect'
 import sinon from 'sinon'
 import { UpdateFeedById } from '.'
-import { FakeFeedRepository } from '../../../../__mocks__/feed.repository'
-import { Feed, FeedSource } from '../../../entities/Feed'
-import { populateFeed } from '../../../../__mocks__/fixtures'
-import { NotExistsError } from '../../../exceptions/not-exists.error'
+import { FakeFeedRepository } from '@/../__mocks__/feed.repository'
+import { Feed, FeedSource } from '@/domain/entities/Feed'
+import { populateFeed } from '@/../__mocks__/fixtures'
+import { NotExistsError } from '@/domain/exceptions/not-exists.error'
 
 describe('Update a feed by id use case', () => {
   afterEach(() => {

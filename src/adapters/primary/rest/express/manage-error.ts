@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from 'express'
 import { StatusCodes } from 'http-status-codes'
-import { AlreadyExistsError } from '../../../../exceptions/already-exist.error'
-import { NotExistsError } from '../../../../exceptions/not-exists.error'
-import { PropertyRequiredError } from '../../../../exceptions/property-required.error'
+import { AlreadyExistsError } from '@/domain/exceptions/already-exist.error'
+import { NotExistsError } from '@/domain/exceptions/not-exists.error'
+import { PropertyRequiredError } from '@/domain/exceptions/property-required.error'
 
 /**
  * Handle HTTP errors

@@ -1,8 +1,8 @@
 import { Inject, Service } from 'typedi'
-import { IFeedRepository } from '../../../repositories/feed.repository'
-import { FEED_REPOSITORY } from '../../../constants'
-import { Feed, FeedSource } from '../../../entities/Feed'
-import { AlreadyExistsError } from '../../../exceptions/already-exist.error'
+import { IFeedRepository } from '@/domain/repositories/feed.repository'
+import { FEED_REPOSITORY } from '@/constants'
+import { Feed, FeedSource } from '@/domain/entities/Feed'
+import { AlreadyExistsError } from '@/domain/exceptions/already-exist.error'
 
 @Service()
 export class CreateFeed {
