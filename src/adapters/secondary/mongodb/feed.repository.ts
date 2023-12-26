@@ -19,13 +19,14 @@ export class MongoFeedRepository implements IFeedRepository {
   }
 
   async create(feed: Feed): Promise<void> {
-    await this.collection.insertOne(feed)
+    const feedModel = Feed.fromDomain(feed)
+    await this.collection.insertOne(feedModel)
   }
 
   async getAll(filters?: FeedFilters): Promise<Feed[]> {
     const filter = this.buildFilter(filters)
     const result = await this.collection.find(filter).toArray()
-    return result.map((document) => new Feed(document))
+    return result.map((document) => Feed.toDomain(document))
   }
 
   async getById(feedId: string): Promise<Feed | undefined> {
@@ -34,7 +35,8 @@ export class MongoFeedRepository implements IFeedRepository {
   }
 
   async update(feed: Feed): Promise<void> {
-    await this.collection.updateOne({ id: feed.id }, { $set: feed })
+    const feedModel = Feed.fromDomain(feed)
+    await this.collection.updateOne({ id: feed.id }, { $set: feedModel })
   }
 
   async delete(feedId: string): Promise<void> {

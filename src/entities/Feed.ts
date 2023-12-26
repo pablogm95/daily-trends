@@ -45,13 +45,41 @@ export class Feed implements IFeed {
     source = FeedSource.CUSTOM,
     newsDate,
   }: {
-    title: string
-    description: string
-    source?: FeedSource
-    newsDate: Date
+    title: string;
+    description: string;
+    source?: FeedSource;
+    newsDate: Date;
   }) {
     return new Feed({
       id: randomUUID(),
+      title,
+      description,
+      source,
+      newsDate,
+    })
+  }
+
+  public static fromDomain(feed: Feed) {
+    return {
+      ...feed,
+    }
+  }
+
+  public static toDomain({
+    id,
+    title,
+    description,
+    source,
+    newsDate,
+  }: {
+    id: string;
+    title: string;
+    description: string;
+    source: FeedSource;
+    newsDate: Date;
+  }): Feed {
+    return new Feed({
+      id,
       title,
       description,
       source,
