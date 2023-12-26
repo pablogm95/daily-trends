@@ -3,3 +3,6 @@ export const ID_GENERATOR = 'ID_GENERATOR'
 
 // REPOSITORIES
 export const FEED_REPOSITORY = 'FEED_REPOSITORY'
+
+// DATABASES
+export const FEED_COLLECTION = 'feeds'
