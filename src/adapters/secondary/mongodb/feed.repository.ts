@@ -29,16 +29,16 @@ export class MongoFeedRepository implements IFeedRepository {
   }
 
   async getById(feedId: string): Promise<Feed | undefined> {
-    const result = await this.collection.findOne({ _id: feedId })
+    const result = await this.collection.findOne({ id: feedId })
     return result ? new Feed(result) : undefined
   }
 
   async update(feed: Feed): Promise<void> {
-    await this.collection.updateOne({ _id: feed._id }, { $set: feed })
+    await this.collection.updateOne({ id: feed.id }, { $set: feed })
   }
 
   async delete(feedId: string): Promise<void> {
-    await this.collection.deleteOne({ _id: feedId })
+    await this.collection.deleteOne({ id: feedId })
   }
 
   /**

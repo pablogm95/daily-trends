@@ -1,7 +1,6 @@
 import { Inject, Service } from 'typedi'
 import { IFeedRepository } from '../../../repositories/feed.repository'
-import { FEED_REPOSITORY, ID_GENERATOR } from '../../../constants'
-import { IIDGenerator } from '../../../ports/id-generator'
+import { FEED_REPOSITORY } from '../../../constants'
 import { Feed, FeedSource } from '../../../entities/Feed'
 import { AlreadyExistsError } from '../../../exceptions/already-exist.error'
 
@@ -9,12 +8,9 @@ import { AlreadyExistsError } from '../../../exceptions/already-exist.error'
 export class CreateFeed {
   @Inject(FEED_REPOSITORY)
   private readonly feedRepository: IFeedRepository
-  @Inject(ID_GENERATOR)
-  private readonly idGenerator: IIDGenerator
 
-  constructor(feedRepository: IFeedRepository, idGenerator: IIDGenerator) {
+  constructor(feedRepository: IFeedRepository) {
     this.feedRepository = feedRepository
-    this.idGenerator = idGenerator
   }
 
   async execute(feedData: {
@@ -30,8 +26,7 @@ export class CreateFeed {
     })
     if (feeds.length > 0) throw new AlreadyExistsError()
 
-    const feed = new Feed({
-      _id: this.idGenerator.generate(),
+    const feed = Feed.create({
       title: feedData.title,
       description: feedData.description,
       source: feedData.source,
@@ -40,6 +35,6 @@ export class CreateFeed {
 
     await this.feedRepository.create(feed)
 
-    return feed._id
+    return feed.id
   }
 }

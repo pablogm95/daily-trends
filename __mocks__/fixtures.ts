@@ -15,8 +15,7 @@ const randomFeedSource = (): FeedSource => {
  * @returns random Feed
  */
 export const populateFeed = () => {
-  return new Feed({
-    _id: faker.string.nanoid(),
+  return Feed.create({
     title: faker.lorem.sentence(),
     description: faker.lorem.paragraphs(),
     source: randomFeedSource(),

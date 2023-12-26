@@ -1,10 +1,10 @@
 import expect from 'expect'
 import sinon from 'sinon'
 import { CreateFeed } from '.'
-import { FakeIdGenerator } from '../../../../__mocks__/id-generator'
 import { FakeFeedRepository } from '../../../../__mocks__/feed.repository'
 import { Feed, FeedSource } from '../../../entities/Feed'
 import { AlreadyExistsError } from '../../../exceptions/already-exist.error'
+import crypto from 'crypto'
 
 describe('Create feed use case', () => {
   afterEach(() => {
@@ -12,14 +12,13 @@ describe('Create feed use case', () => {
   })
 
   it('should create a new feed', async () => {
-    sinon.stub(FakeIdGenerator.prototype, 'generate').returns('123')
-    const stubCreate = sinon.stub(FakeFeedRepository.prototype, 'create').resolves(undefined)
+    sinon.stub(crypto, 'randomUUID').returns('1-2-3-4-5')
+    const stubCreate = sinon
+      .stub(FakeFeedRepository.prototype, 'create')
+      .resolves(undefined)
     sinon.stub(FakeFeedRepository.prototype, 'getAll').resolves([])
 
-    const useCase = new CreateFeed(
-      new FakeFeedRepository(),
-      new FakeIdGenerator()
-    )
+    const useCase = new CreateFeed(new FakeFeedRepository())
 
     await useCase.execute({
       title: 'Feed title',
@@ -30,24 +29,21 @@ describe('Create feed use case', () => {
 
     expect(stubCreate.getCall(0).args[0]).toStrictEqual(
       new Feed({
-        _id: '123',
+        id: '1-2-3-4-5',
         title: 'Feed title',
-        description:'Feed description',
+        description: 'Feed description',
         source: FeedSource.CUSTOM,
-        newsDate: new Date('2020/01/01')
+        newsDate: new Date('2020/01/01'),
       })
     )
   })
 
   it('should return the new feed id', async () => {
-    sinon.stub(FakeIdGenerator.prototype, 'generate').returns('123')
+    sinon.stub(crypto, 'randomUUID').returns('1-2-3-4-5')
     sinon.stub(FakeFeedRepository.prototype, 'create').resolves(undefined)
     sinon.stub(FakeFeedRepository.prototype, 'getAll').resolves([])
 
-    const useCase = new CreateFeed(
-      new FakeFeedRepository(),
-      new FakeIdGenerator()
-    )
+    const useCase = new CreateFeed(new FakeFeedRepository())
 
     const result = await useCase.execute({
       title: 'Feed title',
@@ -56,24 +52,25 @@ describe('Create feed use case', () => {
       newsDate: new Date('2020/01/01'),
     })
 
-    expect(result).toStrictEqual('123')
+    expect(result).toStrictEqual('1-2-3-4-5')
   })
 
   it('should avoid create duplicated feed from the same source', async () => {
-    sinon.stub(FakeIdGenerator.prototype, 'generate').returns('123')
+    sinon.stub(crypto, 'randomUUID').returns('1-2-3-4-5')
     sinon.stub(FakeFeedRepository.prototype, 'create').resolves(undefined)
-    const stubGetAll = sinon.stub(FakeFeedRepository.prototype, 'getAll').resolves([new Feed({
-      _id: '123',
-      title: 'Feed title',
-      description:'Feed description',
-      source: FeedSource.CUSTOM,
-      newsDate: new Date('2020/01/01')
-    })])
+    const stubGetAll = sinon
+      .stub(FakeFeedRepository.prototype, 'getAll')
+      .resolves([
+        new Feed({
+          id: '1-2-3-4-5',
+          title: 'Feed title',
+          description: 'Feed description',
+          source: FeedSource.CUSTOM,
+          newsDate: new Date('2020/01/01'),
+        }),
+      ])
 
-    const useCase = new CreateFeed(
-      new FakeFeedRepository(),
-      new FakeIdGenerator()
-    )
+    const useCase = new CreateFeed(new FakeFeedRepository())
 
     const result = useCase.execute({
       title: 'Feed title',
