@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Feed } from '@/Contexts/DailyTrends/Feeds/domain/Feed'
-import { FeedFilters } from '@/Contexts/DailyTrends/Feeds/domain/FeedFilters'
-import { FeedRepository } from '@/Contexts/DailyTrends/Feeds/domain/FeedRepository'
+import { Feed } from '@/Contexts/News/Feeds/domain/Feed'
+import { FeedFilters } from '@/Contexts/News/Feeds/domain/FeedFilters'
+import { FeedRepository } from '@/Contexts/News/Feeds/domain/FeedRepository'
 import { Nullable } from '@/Contexts/Shared/domain/Nullable'
 import { Uuid } from '@/Contexts/Shared/domain/value-object/Uuid'
 

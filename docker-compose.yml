@@ -1,16 +1,16 @@
 version: "3.8"
 
 services:
-    daily-trends:
+    news:
         build:
             context: .
-            dockerfile: Dockerfile.DailyTrends
+            dockerfile: Dockerfile.News
             target: development
         environment:
-            - MONGODB_URL=mongodb://admin:pass@localhost:27017/daily-trends?authSource=admin
+            - MONGODB_URL=mongodb://admin:pass@localhost:27017/news?authSource=admin
         stdin_open: true
         tty: true
-        container_name: daily-trends
+        container_name: news
         volumes:
             - ./:/app
             - auth_node_modules:/app/node_modules

@@ -4,8 +4,8 @@
   "description": "Daily Trends Backend",
   "main": "./dist/index.js",
   "scripts": {
-    "start:dailyTrends:backend": "NODE_ENV=production node ./dist/apps/dailyTrends/backend/start.js",
-    "dev:dailyTrends:backend": "NODE_ENV=dev ts-node-dev -r tsconfig-paths/register --ignore-watch node_modules ./src/apps/dailyTrends/backend/start.ts",
+    "start:news:backend": "NODE_ENV=production node ./dist/apps/news/backend/start.js",
+    "dev:news:backend": "NODE_ENV=dev ts-node-dev -r tsconfig-paths/register --ignore-watch node_modules ./src/apps/news/backend/start.ts",
     "test": "TZ=utc ./node_modules/.bin/mocha ./src/**/*/*.test.ts",
     "test:watch": "npm run test -- --watch-extensions ts --watch",
     "test:component": "TZ=utc ./node_modules/.bin/mocha ./__tests__/component/**/*.test.ts",

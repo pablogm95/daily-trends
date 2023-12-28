@@ -1,8 +1,8 @@
-import { Feed } from '@/Contexts/DailyTrends/Feeds/domain/Feed'
-import { FeedDescription } from '@/Contexts/DailyTrends/Feeds/domain/FeedDescription'
-import { FeedNewsDate } from '@/Contexts/DailyTrends/Feeds/domain/FeedNewsDate'
-import { FeedSource, Source } from '@/Contexts/DailyTrends/Feeds/domain/FeedSource'
-import { FeedTitle } from '@/Contexts/DailyTrends/Feeds/domain/FeedTitle'
+import { Feed } from '@/Contexts/News/Feeds/domain/Feed'
+import { FeedDescription } from '@/Contexts/News/Feeds/domain/FeedDescription'
+import { FeedNewsDate } from '@/Contexts/News/Feeds/domain/FeedNewsDate'
+import { FeedSource, Source } from '@/Contexts/News/Feeds/domain/FeedSource'
+import { FeedTitle } from '@/Contexts/News/Feeds/domain/FeedTitle'
 import { faker } from '@faker-js/faker'
 
 /**

@@ -39,7 +39,7 @@ COPY --from=base /app/dist /app/dist
 
 USER node
 
-CMD ["npm", "run", "start:dailyTrends:backend"]
+CMD ["npm", "run", "start:news:backend"]
 
 
 #############################
@@ -49,4 +49,4 @@ FROM base AS development
 
 ENV NODE_ENV=development
 
-CMD ["npm", "run", "dev:dailyTrends:backend"]
+CMD ["npm", "run", "dev:news:backend"]
