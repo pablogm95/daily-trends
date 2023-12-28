@@ -32,8 +32,8 @@ export class UpdateFeedById implements UseCase {
     // Check if exist
     if (!feed) throw new NotExistsError()
 
-    const updatedFeed = feed.update(feedData)
+    feed.update(feedData)
 
-    await this.feedRepository.save(updatedFeed)
+    await this.feedRepository.save(feed)
   }
 }

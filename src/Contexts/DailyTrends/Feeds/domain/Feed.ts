@@ -8,11 +8,11 @@ import { FeedNewsDate } from './FeedNewsDate'
 import { Uuid } from '@/Contexts/Shared/domain/value-object/Uuid'
 
 export class Feed extends AggregateRoot {
-  readonly id: FeedId
-  readonly title: FeedTitle
-  readonly description: FeedDescription
-  readonly source: FeedSource
-  readonly newsDate: FeedNewsDate
+  private readonly id: FeedId
+  private title: FeedTitle
+  private description: FeedDescription
+  private source: FeedSource
+  private newsDate: FeedNewsDate
 
   constructor(
     id: FeedId,
@@ -99,17 +99,14 @@ export class Feed extends AggregateRoot {
     description?: FeedDescription;
     source?: FeedSource;
     newsDate?: FeedNewsDate;
-  }): Feed {
-    const feed = { ...this.toPrimitives() }
-    if (feedData.title && !this.title.equals(feedData.title))
-      feed.title = feedData.title.value
-    if (feedData.description && !this.description.equals(feedData.description))
-      feed.description = feedData.description.value
-    if (feedData.source && !this.source.equals(feedData.source))
-      feed.source = feedData.source.value
-    if (feedData.newsDate && !this.newsDate.equals(feedData.newsDate))
-      feed.newsDate = feedData.newsDate.value
-
-    return Feed.fromPrimitives(feed)
+  }): void {
+    if (feedData.title)
+      this.title = feedData.title
+    if (feedData.description)
+      this.description = feedData.description
+    if (feedData.source)
+      this.source = feedData.source
+    if (feedData.newsDate)
+      this.newsDate = feedData.newsDate
   }
 }
