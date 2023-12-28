@@ -1,5 +1,0 @@
-// REPOSITORIES
-export const FEED_REPOSITORY = 'FEED_REPOSITORY'
-
-// DATABASES
-export const FEED_COLLECTION = 'feeds'

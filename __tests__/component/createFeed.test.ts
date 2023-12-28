@@ -1,10 +1,10 @@
 import { faker } from '@faker-js/faker'
 import expect from 'expect'
-import request from 'supertest'
+import { request } from './utils'
 
 describe('Create Feed component test', () => {
   it('should fail on check mandatory properties', async () => {
-    const response = await request('http://localhost:8080')
+    const response = await request
       .post('/feeds')
       .expect(400)
 
@@ -45,7 +45,7 @@ describe('Create Feed component test', () => {
   })
 
   it('should create a feed and returns its id', async () => {
-    const response = await request('http://localhost:8080')
+    const response = await request
       .post('/feeds')
       .send({
         title: faker.lorem.sentence(),

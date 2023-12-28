@@ -4,13 +4,10 @@ services:
     daily-trends:
         build:
             context: .
-            dockerfile: Dockerfile
+            dockerfile: Dockerfile.DailyTrends
             target: development
         environment:
-            - MONGODB_CLUSTER_URL=mongo:27017
-            - MONGODB_URI=mongodb://mongo:27017/daily-trends?authSource=admin
-            - MONGODB_USERNAME=admin
-            - MONGODB_PASSWORD=pass
+            - MONGODB_URL=mongodb://admin:pass@localhost:27017/daily-trends?authSource=admin
         stdin_open: true
         tty: true
         container_name: daily-trends
@@ -19,7 +16,6 @@ services:
             - auth_node_modules:/app/node_modules
         ports:
             - 8080:8080
-            - 9229:9229
         depends_on:
             - mongo
 
@@ -46,7 +42,3 @@ services:
 
 volumes:
     auth_node_modules:
-
-networks:
-    default:
-        name: daily-trends-environment-network

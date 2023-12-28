@@ -1,21 +1,24 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Feed } from '@/domain/entities/Feed'
-import { FeedFilters, IFeedRepository } from '@/domain/repositories/feed.repository'
+import { Feed } from '@/Contexts/DailyTrends/Feeds/domain/Feed'
+import { FeedFilters } from '@/Contexts/DailyTrends/Feeds/domain/FeedFilters'
+import { FeedRepository } from '@/Contexts/DailyTrends/Feeds/domain/FeedRepository'
+import { Nullable } from '@/Contexts/Shared/domain/Nullable'
+import { Uuid } from '@/Contexts/Shared/domain/value-object/Uuid'
 
-export class FakeFeedRepository implements IFeedRepository {
-  create(feed: Feed): Promise<void> {
+export class FakeFeedRepository implements FeedRepository {
+  searchBy(filters: FeedFilters): Promise<Feed[]> {
     throw new Error('Method not implemented.')
   }
-  getAll(filters?: FeedFilters | undefined): Promise<Feed[]> {
+  search(feedId: Uuid): Promise<Nullable<Feed>> {
     throw new Error('Method not implemented.')
   }
-  getById(feedId: string): Promise<Feed | undefined> {
+  delete(feedId: Uuid): Promise<void> {
     throw new Error('Method not implemented.')
   }
-  update(feed: Feed): Promise<void> {
+  save(feed: Feed): Promise<void> {
     throw new Error('Method not implemented.')
   }
-  delete(feedId: string): Promise<void> {
+  searchAll(): Promise<Feed[]> {
     throw new Error('Method not implemented.')
   }
 }

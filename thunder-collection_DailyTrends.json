@@ -1,0 +1,128 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "DailyTrends",
+    "dateExported": "2023-12-28T15:32:52.883Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "d143df98-6ec6-4da6-ad09-15cb16a2071a",
+            "name": "Feeds",
+            "containerId": "",
+            "created": "2023-12-28T12:07:02.836Z",
+            "sortNum": 10000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "f5f2e9e4-1204-4110-a6c8-1a634c39f89d",
+            "colId": "6e3b9024-4ac7-46f9-bd6c-49a84960879c",
+            "containerId": "d143df98-6ec6-4da6-ad09-15cb16a2071a",
+            "name": "getFeeds",
+            "url": "/feeds?startDate=2019  ",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-12-28T12:07:28.919Z",
+            "modified": "2023-12-28T15:31:52.729Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "source",
+                    "value": "el-pais",
+                    "isDisabled": true,
+                    "isPath": false
+                },
+                {
+                    "name": "startDate",
+                    "value": "2019  ",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "e6750e69-2d7a-48dd-b9f2-cf7f3843de7b",
+            "colId": "6e3b9024-4ac7-46f9-bd6c-49a84960879c",
+            "containerId": "",
+            "name": "Status",
+            "url": "/status",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-12-28T12:10:17.500Z",
+            "modified": "2023-12-28T12:10:21.865Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "043170d6-d198-408d-83a3-cf6e1e96fb97",
+            "colId": "6e3b9024-4ac7-46f9-bd6c-49a84960879c",
+            "containerId": "d143df98-6ec6-4da6-ad09-15cb16a2071a",
+            "name": "getFeedById",
+            "url": "/feeds/2b2f300f-df28-48e3-871d-10acd391ccc0",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-12-28T14:30:48.288Z",
+            "modified": "2023-12-28T14:36:01.450Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "16db864c-9607-40e6-88ef-0203c879164b",
+            "colId": "6e3b9024-4ac7-46f9-bd6c-49a84960879c",
+            "containerId": "d143df98-6ec6-4da6-ad09-15cb16a2071a",
+            "name": "createFeed",
+            "url": "/feeds",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2023-12-28T12:25:46.106Z",
+            "modified": "2023-12-28T14:34:27.135Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\": \"Feed title 1\",\n  \"description\": \"Feed description\",\n  \"source\": \"custom\",\n  \"newsDate\": \"2020/01/01\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "a15a2f29-f0ea-428b-ac12-40a3925553b2",
+            "colId": "6e3b9024-4ac7-46f9-bd6c-49a84960879c",
+            "containerId": "d143df98-6ec6-4da6-ad09-15cb16a2071a",
+            "name": "updateFeed",
+            "url": "/feeds/a6e01b9a-4c91-4f69-bedb-5db1893705cc",
+            "method": "PATCH",
+            "sortNum": 40000,
+            "created": "2023-12-28T15:08:09.644Z",
+            "modified": "2023-12-28T15:10:00.994Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\": \"Feed title updated\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "019dd7d3-cbe2-4982-9006-474c510b16a4",
+            "colId": "6e3b9024-4ac7-46f9-bd6c-49a84960879c",
+            "containerId": "d143df98-6ec6-4da6-ad09-15cb16a2071a",
+            "name": "deleteFeed",
+            "url": "/feeds/2b2f300f-df28-48e3-871d-10acd391ccc0",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2023-12-28T15:08:13.557Z",
+            "modified": "2023-12-28T15:08:59.096Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ],
+    "settings": {
+        "options": {
+            "baseUrl": "http://localhost:8080"
+        }
+    }
+}

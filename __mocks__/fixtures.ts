@@ -1,12 +1,16 @@
-import { Feed, FeedSource } from '@/domain/entities/Feed'
+import { Feed } from '@/Contexts/DailyTrends/Feeds/domain/Feed'
+import { FeedDescription } from '@/Contexts/DailyTrends/Feeds/domain/FeedDescription'
+import { FeedNewsDate } from '@/Contexts/DailyTrends/Feeds/domain/FeedNewsDate'
+import { FeedSource, Source } from '@/Contexts/DailyTrends/Feeds/domain/FeedSource'
+import { FeedTitle } from '@/Contexts/DailyTrends/Feeds/domain/FeedTitle'
 import { faker } from '@faker-js/faker'
 
 /**
  * Select a random feed source
  * @returns A random feed source
  */
-const randomFeedSource = (): FeedSource => {
-  const feedSources =  Object.values(FeedSource)
+const randomFeedSource = (): Source => {
+  const feedSources = FeedSource.getValidValues()
   return feedSources[Math.floor(Math.random()*feedSources.length)]
 }
 
@@ -16,10 +20,10 @@ const randomFeedSource = (): FeedSource => {
  */
 export const populateFeed = () => {
   return Feed.create({
-    title: faker.lorem.sentence(),
-    description: faker.lorem.paragraphs(),
-    source: randomFeedSource(),
-    newsDate: faker.date.anytime(),
+    title: new FeedTitle(faker.lorem.sentence()),
+    description: new FeedDescription(faker.lorem.paragraphs()),
+    source: new FeedSource(randomFeedSource()),
+    newsDate: new FeedNewsDate(faker.date.anytime()),
   })
 }
 
