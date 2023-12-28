@@ -7,7 +7,7 @@ services:
             dockerfile: Dockerfile.News
             target: development
         environment:
-            - MONGODB_URL=mongodb://admin:pass@localhost:27017/news?authSource=admin
+            - MONGODB_URL=mongodb://admin:pass@mongo:27017/news?authSource=admin
         stdin_open: true
         tty: true
         container_name: news

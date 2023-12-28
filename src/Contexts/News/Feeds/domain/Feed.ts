@@ -1,4 +1,4 @@
-import { AggregateRoot } from '../../../Shared/domain/AggregateRoot'
+import { AggregateRoot } from '@/Contexts/Shared/domain/AggregateRoot'
 import { FeedScrapedDomainEvent } from './FeedScrapedDomainEvent'
 import { FeedId } from './FeedId'
 import { FeedTitle } from './FeedTitle'
