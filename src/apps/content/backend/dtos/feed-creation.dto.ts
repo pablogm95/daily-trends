@@ -4,52 +4,30 @@ import { Source } from '@/Contexts/Shared/domain/FeedSource'
 import { PropertyRequiredError } from '@/Contexts/Shared/domain/exceptions/PropertyRequiredError'
 
 interface IFeedCreationDTOResult {
-  title: string;
-  description: string;
   source: Source;
-  newsDate: Date;
 }
 
 interface IFeedCreationDTOParams {
-  title: string;
-  description: string;
   source: string;
-  newsDate: string;
 }
 
 const schema = z.object({
-  title: z.string().trim(),
-  description: z.string().trim(),
-  source: z.nativeEnum(Source),
-  newsDate: z.coerce.date()
+  source: z.enum([Source.EL_MUNDO, Source.EL_PAIS]),
 })
 
-export class FeedCreationDTO implements DataTransferObject<IFeedCreationDTOResult> {
-  title: string
-  description: string
+export class FeedCreationDTO
+implements DataTransferObject<IFeedCreationDTOResult>
+{
   source: string
-  newsDate: string
 
-  constructor({
-    title,
-    description,
-    source,
-    newsDate,
-  }: IFeedCreationDTOParams) {
-    this.title = title
-    this.description = description
+  constructor({ source }: IFeedCreationDTOParams) {
     this.source = source
-    this.newsDate = newsDate
   }
 
   sanitize() {
     const result = schema.safeParse({
-      title: this.title,
-      description: this.description,
       source: this.source,
-      newsDate: this.newsDate,
     })
-
 
     if (!result.success) {
       throw new PropertyRequiredError(result.error.message)

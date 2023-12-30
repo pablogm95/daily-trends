@@ -4,7 +4,7 @@ import { FeedUpdateDTO } from './feed-update.dto'
 import { PropertyRequiredError } from '@/Contexts/Shared/domain/exceptions/PropertyRequiredError'
 import { FeedTitle } from '@/Contexts/News/Feeds/domain/FeedTitle'
 import { FeedDescription } from '@/Contexts/News/Feeds/domain/FeedDescription'
-import { FeedSource, Source } from '@/Contexts/News/Feeds/domain/FeedSource'
+import { FeedSource, Source } from '@/Contexts/Shared/domain/FeedSource'
 import { FeedNewsDate } from '@/Contexts/News/Feeds/domain/FeedNewsDate'
 
 describe('Feed Update DTO', () => {

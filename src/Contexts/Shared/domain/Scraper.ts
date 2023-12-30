@@ -1,4 +1,4 @@
 
 export interface Scraper {
-  visit(url: URL): Promise<Document>;
+  scrap<R extends Record<string, string>>(url: URL, querySelectors: Map<keyof R, string>): Promise<R[]>;
 }

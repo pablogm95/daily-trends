@@ -3,7 +3,7 @@ import sinon, { SinonFakeTimers } from 'sinon'
 import { GetFeeds } from '.'
 import { FakeFeedRepository } from '@/../__mocks__/feed.repository'
 import { populateFeeds } from '@/../__mocks__/fixtures'
-import { Source } from '../../domain/FeedSource'
+import { Source } from '../../../../Shared/domain/FeedSource'
 import { FeedFilters } from '../../domain/FeedFilters'
 import { FeedNewsDate } from '../../domain/FeedNewsDate'
 

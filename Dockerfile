@@ -23,6 +23,12 @@ FROM base AS development
 
 ENV NODE_ENV=development
 
+# Install chromium for puppeteer
+RUN apk add --no-cache chromium
+
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
+    PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
+
 
 ######################
 # BUILD CONFIGURATION #
@@ -51,3 +57,9 @@ RUN npm install --only=production
 COPY --from=build /app/dist /app/dist
 
 USER node
+
+# Install chromium for puppeteer
+RUN apk add --no-cache chromium
+
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
+    PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser

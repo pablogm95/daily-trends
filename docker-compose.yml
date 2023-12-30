@@ -4,7 +4,7 @@ services:
     news-server:
         build:
             context: .
-            dockerfile: Dockerfile.News
+            dockerfile: Dockerfile
             target: development
         environment:
             - MONGODB_URL=mongodb://admin:pass@mongo:27017/news?authSource=admin
@@ -26,7 +26,7 @@ services:
     news-worker:
         build:
             context: .
-            dockerfile: Dockerfile.News
+            dockerfile: Dockerfile
             target: development
         environment:
             - MONGODB_URL=mongodb://admin:pass@mongo:27017/news?authSource=admin
@@ -44,6 +44,25 @@ services:
             - 8082:8082
         depends_on:
             - mongo
+
+    content-scraper:
+        build:
+            context: .
+            dockerfile: Dockerfile
+            target: development
+        environment:
+            - PORT=8083
+            - PUBSUB_EMULATOR_HOST=pubsub_emulator:8432
+            - PUBSUB_PROJECT_ID=fake_project
+        stdin_open: true
+        tty: true
+        container_name: content-scraper
+        entrypoint: ["npm", "run", "dev:content:scraper"]
+        volumes:
+            - ./:/app
+            - content-scraper_node_modules:/app/node_modules
+        ports:
+            - 8083:8083
 
     mongo:
         image: mongo:7.0-jammy
@@ -76,3 +95,4 @@ services:
 volumes:
     news-server_node_modules:
     news-worker_node_modules:
+    content-scraper_node_modules:

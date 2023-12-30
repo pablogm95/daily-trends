@@ -1,11 +1,9 @@
 import { AggregateRoot } from '@/Contexts/Shared/domain/AggregateRoot'
-// import { FeedScrapedDomainEvent } from './FeedScrapedDomainEvent'
 import { FeedId } from './FeedId'
 import { FeedTitle } from './FeedTitle'
 import { FeedDescription } from './FeedDescription'
-import { FeedSource, Source } from './FeedSource'
+import { FeedSource, Source } from '../../../Shared/domain/FeedSource'
 import { FeedNewsDate } from './FeedNewsDate'
-// import { Uuid } from '@/Contexts/Shared/domain/value-object/Uuid'
 
 export class Feed extends AggregateRoot {
   readonly id: FeedId

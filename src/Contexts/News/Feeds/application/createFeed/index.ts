@@ -1,6 +1,6 @@
 import { Inject, Service } from 'typedi'
 import { FeedRepository } from '@/Contexts/News/Feeds/domain/FeedRepository'
-import { Source } from '@/Contexts/News/Feeds/domain/FeedSource'
+import { Source } from '@/Contexts/Shared/domain/FeedSource'
 import { Feed } from '@/Contexts/News/Feeds/domain/Feed'
 import { AlreadyExistsError } from '@/Contexts/Shared/domain/exceptions/AlreadyExistError'
 import { UseCase } from '@/Contexts/Shared/application/UseCase'

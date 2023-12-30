@@ -1,7 +1,7 @@
 import { Inject, Service } from 'typedi'
 import { FeedRepository } from '@/Contexts/News/Feeds/domain/FeedRepository'
 import { NotExistsError } from '@/Contexts/Shared/domain/exceptions/NotExistsError'
-import { FeedSource } from '@/Contexts/News/Feeds/domain/FeedSource'
+import { FeedSource } from '@/Contexts/Shared/domain/FeedSource'
 import { FeedTitle } from '@/Contexts/News/Feeds/domain/FeedTitle'
 import { FeedDescription } from '@/Contexts/News/Feeds/domain/FeedDescription'
 import { FeedNewsDate } from '@/Contexts/News/Feeds/domain/FeedNewsDate'

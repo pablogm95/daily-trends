@@ -1,7 +1,7 @@
-import { FeedScrapedDomainEvent } from '@/Contexts/Content/Feed/domain/FeedScrapedDomainEvent'
 import { CreateFeed } from '@/Contexts/News/Feeds/application/createFeed'
 import { DomainEventClass } from '@/Contexts/Shared/domain/DomainEvent'
 import { DomainEventSubscriber } from '@/Contexts/Shared/domain/DomainEventSubscriber'
+import { FeedScrapedDomainEvent } from '@/Contexts/Shared/domain/FeedScrapedDomainEvent'
 import { AlreadyExistsError } from '@/Contexts/Shared/domain/exceptions/AlreadyExistError'
 
 export class CreateFeedScrapedSubscription

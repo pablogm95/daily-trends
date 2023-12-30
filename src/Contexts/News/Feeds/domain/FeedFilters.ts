@@ -1,5 +1,5 @@
 import { FeedTitle } from './FeedTitle'
-import { FeedSource, Source } from './FeedSource'
+import { FeedSource, Source } from '../../../Shared/domain/FeedSource'
 import { FeedNewsDate } from './FeedNewsDate'
 
 export class FeedFilters {

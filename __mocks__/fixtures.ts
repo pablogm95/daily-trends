@@ -1,7 +1,7 @@
 import { Feed } from '@/Contexts/News/Feeds/domain/Feed'
 import { FeedDescription } from '@/Contexts/News/Feeds/domain/FeedDescription'
 import { FeedNewsDate } from '@/Contexts/News/Feeds/domain/FeedNewsDate'
-import { FeedSource, Source } from '@/Contexts/News/Feeds/domain/FeedSource'
+import { FeedSource, Source } from '@/Contexts/Shared/domain/FeedSource'
 import { FeedTitle } from '@/Contexts/News/Feeds/domain/FeedTitle'
 import { faker } from '@faker-js/faker'
 

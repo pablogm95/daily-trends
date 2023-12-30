@@ -1,6 +1,6 @@
 import { z } from 'zod'
 import { DataTransferObject } from '@/Contexts/Shared/domain/DataTransferObject'
-import { FeedSource, Source } from '@/Contexts/News/Feeds/domain/FeedSource'
+import { FeedSource, Source } from '@/Contexts/Shared/domain/FeedSource'
 import { PropertyRequiredError } from '@/Contexts/Shared/domain/exceptions/PropertyRequiredError'
 import { FeedTitle } from '@/Contexts/News/Feeds/domain/FeedTitle'
 import { FeedDescription } from '@/Contexts/News/Feeds/domain/FeedDescription'

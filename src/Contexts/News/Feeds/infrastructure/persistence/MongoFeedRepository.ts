@@ -1,6 +1,6 @@
 import { FeedRepository } from '@/Contexts/News/Feeds/domain/FeedRepository'
 import { Feed } from '@/Contexts/News/Feeds/domain/Feed'
-import { Source } from '@/Contexts/News/Feeds/domain/FeedSource'
+import { Source } from '@/Contexts/Shared/domain/FeedSource'
 import { FeedId } from '@/Contexts/News/Feeds/domain/FeedId'
 import { MongoRepository } from '@/Contexts/Shared/infrastructure/persistence/mongo/MongoRepository'
 import { Nullable } from '@/Contexts/Shared/domain/Nullable'
