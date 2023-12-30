@@ -2,6 +2,7 @@ import Container from 'typedi'
 import { MongoFeedRepository } from '@/Contexts/News/Feeds/infrastructure/persistence/MongoFeedRepository'
 import { MongoConfigFactory } from '@/Contexts/News/Shared/infrastructure/persistence/mongo/MongoConfigFactory'
 import { MongoClientFactory } from '@/Contexts/Shared/infrastructure/persistence/mongo/MongoClientFactory'
+import { PubSubEventBus } from '@/Contexts/Shared/infrastructure/EventBus/PubSub/PubSubEventBus'
 
 // SHARED
 Container.set(
@@ -14,6 +15,10 @@ Container.set(
     'news',
     Container.get('News.Shared.MongoConfig')
   )
+)
+Container.set(
+  'News.Shared.EventBus',
+  new PubSubEventBus()
 )
 
 // FEEDS

@@ -1,11 +1,11 @@
 import { AggregateRoot } from '@/Contexts/Shared/domain/AggregateRoot'
-import { FeedScrapedDomainEvent } from './FeedScrapedDomainEvent'
+// import { FeedScrapedDomainEvent } from './FeedScrapedDomainEvent'
 import { FeedId } from './FeedId'
 import { FeedTitle } from './FeedTitle'
 import { FeedDescription } from './FeedDescription'
 import { FeedSource, Source } from './FeedSource'
 import { FeedNewsDate } from './FeedNewsDate'
-import { Uuid } from '@/Contexts/Shared/domain/value-object/Uuid'
+// import { Uuid } from '@/Contexts/Shared/domain/value-object/Uuid'
 
 export class Feed extends AggregateRoot {
   readonly id: FeedId
@@ -53,26 +53,26 @@ export class Feed extends AggregateRoot {
     return feed
   }
 
-  static scrap(
-    title: FeedTitle,
-    description: FeedDescription,
-    source: FeedSource,
-    newsDate: FeedNewsDate
-  ): Feed {
-    const feed = new Feed(Uuid.random(), title, description, source, newsDate)
+  // static scrap(
+  //   title: FeedTitle,
+  //   description: FeedDescription,
+  //   source: FeedSource,
+  //   newsDate: FeedNewsDate
+  // ): Feed {
+  //   const feed = new Feed(Uuid.random(), title, description, source, newsDate)
 
-    feed.record(
-      new FeedScrapedDomainEvent({
-        aggregateId: feed.id.value,
-        title: feed.title.value,
-        description: feed.description.value,
-        source: feed.source.value,
-        newsDate: feed.newsDate.value,
-      })
-    )
+  //   feed.record(
+  //     new FeedScrapedDomainEvent({
+  //       aggregateId: feed.id.value,
+  //       title: feed.title.value,
+  //       description: feed.description.value,
+  //       source: feed.source.value,
+  //       newsDate: feed.newsDate.value,
+  //     })
+  //   )
 
-    return feed
-  }
+  //   return feed
+  // }
 
   static fromPrimitives(plainData: {
     id: string;

@@ -32,12 +32,12 @@ export class Server {
   async listen(): Promise<void> {
     return new Promise((resolve) => {
       this.httpServer = this.express.listen(this.port, () => {
-        console.log(
-          `App is running at http://localhost:${
+        console.info(
+          `Server is running at http://localhost:${
             this.port
           } in ${this.express.get('env')} mode`
         )
-        console.log('  Press CTRL-C to stop\n')
+        console.info('  Press CTRL-C to stop\n')
         resolve()
       })
     })

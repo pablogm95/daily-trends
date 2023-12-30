@@ -1,21 +1,47 @@
 version: "3.8"
 
 services:
-    news:
+    news-server:
         build:
             context: .
             dockerfile: Dockerfile.News
             target: development
         environment:
             - MONGODB_URL=mongodb://admin:pass@mongo:27017/news?authSource=admin
+            - PORT=8080
+            - PUBSUB_EMULATOR_HOST=pubsub_emulator:8432
+            - PUBSUB_PROJECT_ID=fake_project
         stdin_open: true
         tty: true
-        container_name: news
+        container_name: news-server
+        entrypoint: ["npm", "run", "dev:news:server"]
         volumes:
             - ./:/app
-            - auth_node_modules:/app/node_modules
+            - news-server_node_modules:/app/node_modules
         ports:
             - 8080:8080
+        depends_on:
+            - mongo
+
+    news-worker:
+        build:
+            context: .
+            dockerfile: Dockerfile.News
+            target: development
+        environment:
+            - MONGODB_URL=mongodb://admin:pass@mongo:27017/news?authSource=admin
+            - PORT=8082
+            - PUBSUB_EMULATOR_HOST=pubsub_emulator:8432
+            - PUBSUB_PROJECT_ID=fake_project
+        stdin_open: true
+        tty: true
+        container_name: news-worker
+        entrypoint: ["npm", "run", "dev:news:worker"]
+        volumes:
+            - ./:/app
+            - news-worker_node_modules:/app/node_modules
+        ports:
+            - 8082:8082
         depends_on:
             - mongo
 
@@ -40,5 +66,13 @@ services:
         ports:
             - 8081:8081
 
+    pubsub_emulator:
+        image: storytel/gcp-pubsub-emulator
+        container_name: pubsub_emulator
+        ports:
+            - 8432:8432
+        command: --host=0.0.0.0 --port=8432
+
 volumes:
-    auth_node_modules:
+    news-server_node_modules:
+    news-worker_node_modules:

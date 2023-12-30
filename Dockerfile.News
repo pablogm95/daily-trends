@@ -15,8 +15,21 @@ RUN npm install
 
 COPY . /app
 
-RUN \
-  npm run compile
+
+#############################
+# DEVELOPMENT CONFIGURATION #
+#############################
+FROM base AS development
+
+ENV NODE_ENV=development
+
+
+######################
+# BUILD CONFIGURATION #
+######################
+FROM base AS build
+
+RUN npm run compile
 
 
 ############################
@@ -35,18 +48,6 @@ COPY package*.json ./
 RUN npm install --only=production
 
 # Copy the source build
-COPY --from=base /app/dist /app/dist
+COPY --from=build /app/dist /app/dist
 
 USER node
-
-CMD ["npm", "run", "start:news:backend"]
-
-
-#############################
-# DEVELOPMENT CONFIGURATION #
-#############################
-FROM base AS development
-
-ENV NODE_ENV=development
-
-CMD ["npm", "run", "dev:news:backend"]

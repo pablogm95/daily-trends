@@ -2,7 +2,7 @@ import 'reflect-metadata'
 import { NewsBackendApp } from './NewsBackendApp'
 
 try {
-  new NewsBackendApp().start()
+  new NewsBackendApp().startWorker()
 } catch (error) {
   console.error(error)
   process.exit(1)
