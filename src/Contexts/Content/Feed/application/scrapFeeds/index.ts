@@ -2,10 +2,7 @@ import { Inject, Service } from 'typedi'
 import { Source } from '@/Contexts/Shared/domain/FeedSource'
 import { UseCase } from '@/Contexts/Shared/application/UseCase'
 import { EventBus } from '@/Contexts/Shared/domain/EventBus'
-import { FeedScraper } from '../../domain/FeedScraper'
-import { FeedScrapStrategyElMundo } from '../../domain/FeedScrapStrategyElMundo'
-import { FeedScrapStrategyElPais } from '../../domain/FeedScrapStrategyElPais'
-import { FeedScraped } from '../../domain/FeedScraped'
+import { FeedScrapedFactory } from '../../domain/FeedScrapedFactory'
 
 @Service()
 export class ScrapFeeds implements UseCase {
@@ -17,19 +14,9 @@ export class ScrapFeeds implements UseCase {
   }
 
   async run(data: { source: Source }): Promise<void> {
-    const feedScraper = new FeedScraper()
+    const feedScrapedFactory = new FeedScrapedFactory()
 
-    if (data.source === Source.EL_MUNDO) {
-      feedScraper.setStrategy(new FeedScrapStrategyElMundo())
-    } else if (data.source === Source.EL_PAIS) {
-      feedScraper.setStrategy(new FeedScrapStrategyElPais())
-    }
-
-    const items = await feedScraper.executeStrategy()
-
-    const feeds = items.map((item) =>
-      FeedScraped.create({ ...item, source: data.source })
-    )
+    const feeds = await feedScrapedFactory.createScrapedFeeds(data.source)
 
     this.eventBus.publish(feeds.flatMap((feed) => feed.pullDomainEvents()))
   }
