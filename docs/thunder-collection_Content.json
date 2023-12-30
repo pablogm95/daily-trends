@@ -1,0 +1,50 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Content",
+    "dateExported": "2023-12-30T22:12:19.242Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "e948cfb3-c2ae-4131-991d-cb3ee8d8cdc2",
+            "name": "Feeds",
+            "containerId": "",
+            "created": "2023-12-30T17:37:47.594Z",
+            "sortNum": 10000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "3a50a4b1-6d7f-44a5-95db-0f490d1b1215",
+            "colId": "f1925cc8-3938-4d6e-b1d8-df475e005960",
+            "containerId": "e948cfb3-c2ae-4131-991d-cb3ee8d8cdc2",
+            "name": "Scrap",
+            "url": "/feeds/el-pais",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-12-30T17:37:52.621Z",
+            "modified": "2023-12-30T18:14:19.074Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "fe98e05b-fee4-47e7-9ce0-c72e60a37834",
+            "colId": "f1925cc8-3938-4d6e-b1d8-df475e005960",
+            "containerId": "",
+            "name": "Status",
+            "url": "/status",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-12-30T17:42:23.746Z",
+            "modified": "2023-12-30T17:42:23.746Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ],
+    "settings": {
+        "options": {
+            "baseUrl": "http://localhost:8083"
+        }
+    }
+}
