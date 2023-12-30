@@ -18,13 +18,7 @@ export class PubSubEventBus implements EventBus {
   public async addSubscribers(
     subscribers: Set<DomainEventSubscriber<DomainEvent>>
   ): Promise<void> {
-    // TODO: Refactor
-    for (const subscriber of subscribers) {
-      for (const subscribedTo of subscriber.subscribedTo()) {
-        await this.createTopicIfNotExists(subscribedTo.EVENT_NAME)
-        await this.createSubscriptionIfNotExists(subscribedTo.EVENT_NAME)
-      }
-    }
+    await this.ensureTopicsAndSubscriptions(subscribers)
 
     subscribers.forEach(async (subscriber) => {
       this.attachSubscriberToEvent(subscriber.subscribedTo(), subscriber)
@@ -48,6 +42,19 @@ export class PubSubEventBus implements EventBus {
           message.ack()
         })
     })
+  }
+
+  private async ensureTopicsAndSubscriptions(subscribers: Set<DomainEventSubscriber<DomainEvent>>): Promise<void> {
+    for (const subscriber of subscribers) {
+      for (const subscribedTo of subscriber.subscribedTo()) {
+        await this.ensureTopicAndSubscription(subscribedTo.EVENT_NAME)
+      }
+    }
+  }
+
+  private async ensureTopicAndSubscription(topicName: string): Promise<void> {
+    await this.createTopicIfNotExists(topicName)
+    await this.createSubscriptionIfNotExists(topicName)
   }
 
   private async createTopicIfNotExists(topicName: string): Promise<void> {
