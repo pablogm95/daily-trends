@@ -39,7 +39,7 @@ export class Feed extends AggregateRoot {
     newsDate: Date | string;
   }): Feed {
     const feed = new Feed(
-      FeedId.random(),
+      new FeedId(FeedId.random().value),
       new FeedTitle(title),
       new FeedDescription(description),
       new FeedSource(source),

@@ -14,13 +14,13 @@ describe('Feed Creation DTO', () => {
 
   it('should sanitize the entry params', () => {
     const dataIn: any = {
-      source: 'custom',
+      source: 'el-pais',
     }
 
     const result = new FeedCreationDTO(dataIn).sanitize()
 
     expect(result).toStrictEqual({
-      source: 'custom',
+      source: 'el-pais',
     })
   })
 })

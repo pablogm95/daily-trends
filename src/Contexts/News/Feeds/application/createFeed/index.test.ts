@@ -3,11 +3,14 @@ import sinon from 'sinon'
 import { CreateFeed } from '.'
 import { FakeFeedRepository } from '@/../__mocks__/feed.repository'
 import { Feed } from '@/Contexts/News/Feeds/domain/Feed'
-import { Source } from '@/Contexts/Shared/domain/FeedSource'
+import { FeedSource, Source } from '@/Contexts/Shared/domain/FeedSource'
 import { AlreadyExistsError } from '@/Contexts/Shared/domain/exceptions/AlreadyExistError'
 import { Uuid } from '@/Contexts/Shared/domain/value-object/Uuid'
 import { faker } from '@faker-js/faker'
 import { FeedId } from '../../domain/FeedId'
+import { FeedTitle } from '../../domain/FeedTitle'
+import { FeedDescription } from '../../domain/FeedDescription'
+import { FeedNewsDate } from '../../domain/FeedNewsDate'
 
 
 describe('Create feed use case', () => {
@@ -43,7 +46,7 @@ describe('Create feed use case', () => {
     )
   })
 
-  it('should return the new feed id', async () => {
+  it('should return the new feed', async () => {
     const uuid = faker.string.uuid()
     sinon.stub(Uuid, 'random').returns(new Uuid(uuid))
     sinon.stub(FakeFeedRepository.prototype, 'save').resolves(undefined)
@@ -58,7 +61,13 @@ describe('Create feed use case', () => {
       newsDate: new Date('2020/01/01'),
     })
 
-    expect(result).toStrictEqual(new FeedId(uuid))
+    expect(result).toStrictEqual(new Feed(
+      new FeedId(uuid),
+      new FeedTitle('Feed title'),
+      new FeedDescription('Feed description'),
+      new FeedSource(Source.CUSTOM),
+      new FeedNewsDate(new Date('2020/01/01')),
+    ))
   })
 
   it('should avoid create duplicated feed from the same source', async () => {
